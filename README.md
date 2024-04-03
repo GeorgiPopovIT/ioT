@@ -1,0 +1,1 @@
+Idea of this project is through arduino and moisture sensor to calculate soil moisture in plants and for client and for UI in React.js to display some dashboard with data. And also if the humidity is low, automatically water the plants.
