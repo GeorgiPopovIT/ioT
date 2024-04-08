@@ -1,6 +1,6 @@
 import CardItem from "./CardItem";
 
-export default function CardItemList(){
+const CardItemList = () => {
     return(
         <div className="row">
             <CardItem/>
@@ -10,3 +10,5 @@ export default function CardItemList(){
         </div>
     )
 }
+
+export default CardItemList;

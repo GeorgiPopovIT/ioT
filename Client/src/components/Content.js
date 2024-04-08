@@ -3,7 +3,7 @@ import CardGraphic from "./CardGraphic";
 import CardItemList from "./CardItemList";
 import Statistics from "./Statistics";
 
-export default function Content() {
+const Content = () => {
     return(
     <div className="content">
         <CardItemList/>
@@ -16,3 +16,5 @@ export default function Content() {
       
     )
 }
+
+export default Content;

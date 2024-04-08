@@ -1,4 +1,4 @@
-export default function CardChart(){
+const CardChart = () => {
     return(
         <div className="col-md-8">
             <div className="card card-chart">
@@ -23,3 +23,5 @@ export default function CardChart(){
         </div>
     )
 }
+
+export default CardChart;

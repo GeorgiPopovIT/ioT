@@ -1,4 +1,4 @@
-export default function CardItem(){
+const CardItem = () => {
     return(
         <div class="col-lg-3 col-md-6 col-sm-6">
             <div class="card card-stats">
@@ -28,3 +28,5 @@ export default function CardItem(){
           </div>
     )
 }
+
+export default CardItem;

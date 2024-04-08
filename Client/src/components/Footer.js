@@ -1,4 +1,4 @@
-export default function Footer(){
+const Footer = () => {
     return(
         <footer class="footer footer-black  footer-white ">
         <div class="container-fluid">
@@ -22,3 +22,5 @@ export default function Footer(){
       </footer>
     )
 }
+
+export default Footer;

@@ -2,7 +2,7 @@ import Content from "./Content";
 import Footer from "./Footer";
 import NavBar from "./NavBar";
 
-export default function Main(){
+const Main = () => {
     return(
         <div className="main-panel">
             <NavBar/>
@@ -11,3 +11,5 @@ export default function Main(){
         </div>
     )
 }
+
+export default Main;

@@ -1,4 +1,4 @@
-export default function CardGraphic(){
+const CardGraphic = () => {
     return(
         <div class="row">
           <div class="col-md-12">
@@ -21,3 +21,5 @@ export default function CardGraphic(){
         </div>
     )
 }
+
+export default CardGraphic;

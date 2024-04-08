@@ -1,4 +1,4 @@
-export default function Statistics(){
+const Statistics = () => {
     return(
         <div class="col-md-4">
             <div class="card ">
@@ -25,3 +25,5 @@ export default function Statistics(){
         </div>
     )
 }
+
+export default Statistics;
