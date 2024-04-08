@@ -2,12 +2,12 @@ export default function Sidebar(){
     return (
       <div className="sidebar" data-color="white" data-active-color="danger">
       <div className="logo">
-        <a href="https://www.creative-tim.com" className="simple-text logo-mini">
+        <a href="/" className="simple-text logo-mini">
           <div className="logo-image-small">
-            <img src="/assets/img/logo-small.png" alt="logo-small.png"/>
+            <img src="../src/assets/img/logo-small.png" alt="logo-small.png"/>
           </div>
         </a>
-        <a href="https://www.creative-tim.com" className="simple-text logo-normal">
+        <a href="/" className="simple-text logo-normal">
           Creative Tim
         </a>
       </div>
