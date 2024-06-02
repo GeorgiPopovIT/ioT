@@ -1,4 +1,10 @@
+import { useEffect } from "react";
+
 const CardChart = () => {
+  useEffect(() => {
+
+  },[]);
+  
     return(
         <div className="col-md-8">
             <div className="card card-chart">

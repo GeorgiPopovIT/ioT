@@ -1,21 +1,30 @@
-#define SECRET_SSID "Popovi"
-#define SECRET_PASS "1234"
+#include <ArduinoMqttClient.h>
+#include <WiFi.h>
 // define led according to pin diagram
 int led1 = D10;
 int led2 = D9;
 int led3 = D8;
 
-char ssid[] = SECRET_SSID;        // your network SSID (name)
-char pass[] = SECRET_PASS;    // your network password (use for WPA, or use as key for WEP)
+const char* ssid = "Popovi-5GHz";
+const char* password = "42b4632c";    // your network password (use for WPA, or use as key for WEP)
+
 
 WiFiClient wifiClient;
 MqttClient mqttClient(wifiClient);
 
-const char broker[] = "test.mosquitto.org";
-int port = 1883;
-const char topic[]  = "real_unique_topic";
-const char topic2[]  = "real_unique_topic_2";
-const char topic3[]  = "real_unique_topic_3";
+//MQTT broker address
+const char  mqtt_broker[]   = "mqtt3.thingspeak.com";
+int         mqtt_port       = 1883;
+
+//MQTT credentials
+const char  mqtt_id[]       = "<INSERT_YOUR_ID>";
+const char  mqtt_username[] = "<INSERT_YOUR_USERNAME>";
+const char  mqtt_pwd[]      = "<INSERT_YOUR_PASSWORD>";
+
+//MQTT topics
+const char  topic_temp[]    = "channels/<INSERT_YOUR_CHANNEL_ID>/publish/fields/field1";
+const char  topic_hum[]     = "channels/<INSERT_YOUR_CHANNEL_ID>/publish/fields/field2";
+
 
 void setup() {
 
@@ -28,6 +37,22 @@ void setup() {
   pinMode(led1, OUTPUT);
   pinMode(led2, OUTPUT);
   pinMode(led3, OUTPUT);
+
+  WiFi.begin(ssid, password);
+
+    while (WiFi.status() != WL_CONNECTED) {
+        delay(500);
+        Serial.print(".");
+    }
+
+  Serial.println("You're connected to the network");
+  Serial.println(WiFi.localIP());
+ 
+ if (!mqttClient.connect(mqtt_broker, mqtt_port)) {
+  Serial.print("MQTT connection failed! Error code = ");
+  Serial.println(mqttClient.connectError());
+  }
+ Serial.println("You're connected to the MQTT broker!");
 }
 
 int calculatePercentage(int start, int end, int current) {
@@ -87,10 +112,14 @@ void loop() {
   }
 delay(500); 
 
-
   mqttClient.poll();
 
-  mqttClient.beginMessage(percentage);
-  mqttClient.print(Rvalue);
-  mqttClient.endMessage();
+ //Send temperature data to the respective topic
+ mqttClient.beginMessage(topic_temp);
+ mqttClient.print(temp_hum_val[1]);
+ mqttClient.endMessage();
+ //Send humidity data to the respective topic
+ mqttClient.beginMessage(topic_hum);
+ mqttClient.print(temp_hum_val[0]);
+ mqttClient.endMessage();
 }
